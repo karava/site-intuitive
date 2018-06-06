@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/createjs-2015.05.21.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='src/flow.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='src/flow.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='src/flowitem.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='src/flowconnector.js') }}"></script>
+
+</head>
+<body>
+
+<title>Guardians of the flow charts</title>
+    <canvas id="canvas1" width="500" height="300"></canvas>
+
+    <script type="text/javascript">
+    /* global flowjs */
+
+    window.addEventListener("load", func);
+
+    function func(){
+        console.log("LOADED");
+        var test1 = "something";
+        var a = new flowjs.DiGraph();
+        a.addPaths([
+            ["WeatherStation", "intuitive.ai"],
+            ["WeatherStation1", "intuitive.ai"],
+            ["intuitive.ai", "AI"],
+            ["smart home", "intuitive.ai"],
+        ]);
+
+        var cf = new flowjs.DiFlowChart("canvas1", a);
+        a._nodes.WeatherStation.link = "www.google.com";
+        cf.draw();
+        console.log(a._nodes.WeatherStation);
+
+    }
+
+
+    </script>
+
+</body>
+</html>

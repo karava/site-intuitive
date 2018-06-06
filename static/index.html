@@ -1,0 +1,39 @@
+<head>
+    <script type="text/javascript" src="lib/createjs-2015.05.21.min.js"></script>
+    <script type="text/javascript" src="flow.min.js"></script>
+    
+    <!--<script type="text/javascript" src="src/flow.js"></script>-->
+    <!--<script type="text/javascript" src="src/flowitem.js"></script>-->
+    <!--<script type="text/javascript" src="src/flowconnector.js"></script>-->
+    <!--<script type="text/javascript" src="src/graph.js"></script>-->
+    
+</head>
+<body>
+    <title>Gurdians of the flow charts</title>
+    <h1>Gurdians of the flow charts</h1>
+    
+    <canvas id="canvas1" width="500" height="300"></canvas>
+
+    <script type="text/javascript">
+    /* global flowjs */
+    
+    window.addEventListener("load", func);
+    
+    function func(){
+        console.log("LOADED");
+        
+        var a = new flowjs.DiGraph();
+        a.addPaths([
+            ["A1", "A2"],
+            ["A1", "B2"],
+            //["B1", "B2"],
+            ["B1", "A2"]
+        ]);
+
+        new flowjs.DiFlowChart("canvas1", a).draw();
+    }
+
+    </script>
+
+</body>
+
