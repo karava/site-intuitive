@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1>Weather Station</h1>
+<h1>Weather Station 1</h1>
 
 
 <!--Use this chart for time-based amcharts, https://www.amcharts.com/demos/area-with-time-based-data/ -->
@@ -36,13 +36,13 @@ var chart = AmCharts.makeChart("chartdiv", {
     "dataProvider": chartData,
     "valueAxes": [{
         "position": "left",
-        "title": "Unique visitors"
+        "title": "Temperature"
     }],
     "graphs": [{
         "id": "g1",
         "fillAlphas": 0.4,
         "valueField": "visits",
-         "balloonText": "<div style='margin:5px; font-size:19px;'>Visits:<b>[[value]]</b></div>"
+         "balloonText": "<div style='margin:5px; font-size:19px;'>Temp:<b>[[value]]</b></div>"
     }],
     "chartScrollbar": {
         "graph": "g1",
@@ -79,31 +79,20 @@ zoomChart();
 // this method is called when chart is first inited as we listen for "dataUpdated" event
 function zoomChart() {
     // different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
-    chart.zoomToIndexes(chartData.length - 250, chartData.length - 100);
+    chart.zoomToIndexes(chartData.length - 4, chartData.length +1);
 }
 
 // generate some random data, quite different range
 function generateChartData() {
     var chartData = [];
-    // current date
-    var firstDate = new Date();
-    // now set 500 minutes back
-    firstDate.setMinutes(firstDate.getDate() - 1000);
 
-    // and generate 500 data items
-    var visits = 500;
-    for (var i = 0; i < 500; i++) {
-        var newDate = new Date(firstDate);
-        // each time we add one minute
-        newDate.setMinutes(newDate.getMinutes() + i);
-        // some random number
-        visits += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
-        // add data item to the array
-        chartData.push({
-            date: newDate,
-            visits: visits
-        });
-    }
+    {% for i in range(0,data|length) %}
+    chartData.push({
+    date: "{{ data[i]['timestamp'] }}",
+    visits: "{{ data[i]['temperature'] }}",
+    });
+    {% endfor %}
+
     return chartData;
 }
 </script>
