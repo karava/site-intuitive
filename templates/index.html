@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% extends "layout.html" %}
 
-    <script type="text/javascript" src="{{ url_for('static', filename='lib/createjs-2015.05.21.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='src/flow.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='src/flow.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='src/flowitem.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='src/flowconnector.js') }}"></script>
-
-</head>
-<body>
+{% block body %}
 
 <title>Guardians of the flow charts</title>
     <canvas id="canvas1" width="500" height="300"></canvas>
@@ -27,7 +16,6 @@
         var a = new flowjs.DiGraph();
         a.addPaths([
             ["WeatherStation", "intuitive.ai"],
-            ["WeatherStation1", "intuitive.ai"],
             ["intuitive.ai", "AI"],
             ["smart home", "intuitive.ai"],
         ]);
@@ -42,5 +30,4 @@
 
     </script>
 
-</body>
-</html>
+{% endblock%}

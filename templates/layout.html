@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>intuitive.ai</title>
+
+    <!--Import scripts for home page flow chart, use flowJS and createJS https://www.cssscript.com/dynamic-flow-chart-library-with-createjs-flowjs/-->
+    <script type="text/javascript" src="{{ url_for('static', filename='lib/createjs-2015.05.21.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='src/flow.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='src/flow.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='src/flowitem.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='src/flowconnector.js') }}"></script>
+
+    <!--import Bootstrap v3.3.7-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!--Additional custom CSS styles-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+
+    <div id="container">
+        <section id="masthead">
+            <h1><a href="/" title="Intuitive">intuitive.ai</a></h1>
+        </section>
+
+        {% block body %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

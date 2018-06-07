@@ -33,8 +33,8 @@ def dynamic(project):
     with connection.cursor() as cursor:
         sql = "SELECT * FROM `weather_station`"
         cursor.execute(sql)
-        cursor.close()
         data = cursor.fetchall()
+        cursor.close()
         print(data[1]['temperature'])
 
     # return render_template('projects/booknotes.html',data=data)
