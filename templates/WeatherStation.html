@@ -28,6 +28,7 @@ var chart = AmCharts.makeChart("chartdiv", {
     "type": "serial",
     "theme": "light",
     "marginRight": 80,
+    "dataDateFormat": "YYYY-MM-DD HH:NN:SS",
     "dataProvider": chartData,
     "valueAxes": [{
         "position": "left",
@@ -65,6 +66,7 @@ var chart = AmCharts.makeChart("chartdiv", {
         "enabled": true,
          "dateFormat": "YYYY-MM-DD HH:NN:SS"
     }
+
 });
 
 chart.addListener("dataUpdated", zoomChart);
