@@ -6,3 +6,8 @@ body {
   font-size: 17px;
   line-height: 24px;
 }
+
+text.amcharts-axis-title {
+  color: red;
+  transform: translate(-60px, 185px) rotate(-90deg)
+}

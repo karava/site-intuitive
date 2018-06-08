@@ -32,6 +32,7 @@ var chart = AmCharts.makeChart("chartdiv", {
     "dataProvider": chartData,
     "valueAxes": [{
         "position": "left",
+
         "title": "Temperature"
     }],
     "graphs": [{
@@ -76,7 +77,7 @@ zoomChart();
 // this method is called when chart is first inited as we listen for "dataUpdated" event
 function zoomChart() {
     // different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
-    chart.zoomToIndexes(chartData.length - 4, chartData.length +1);
+    chart.zoomToIndexes(chartData.length - 20, chartData.length +1);
 }
 
 // generate some random data, quite different range
@@ -86,7 +87,7 @@ function generateChartData() {
     {% for i in range(0,data|length) %}
     chartData.push({
     date: "{{ data[i]['timestamp'] }}",
-    visits: "{{ data[i]['temperature'] }}",
+    visits: "{{ '%0.2f'| format(data[i]['temperature']) }}",
     });
     {% endfor %}
 
@@ -108,7 +109,7 @@ function generateChartData() {
     {% for i in range(data|length-10,data|length) %}
         <tr>
             <td>{{ data[i]['timestamp'] }}</td>
-            <td>{{ data[i]['temperature'] }}</td>
+            <td>{{ '%0.2f'| format(data[i]['temperature']) }}</td>
         </tr>
     {% endfor %}
 </table>

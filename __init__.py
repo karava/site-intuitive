@@ -29,13 +29,15 @@ def index():
 
 @app.route("/<string:project>")
 def dynamic(project):
-    print(project)
+    # print(project)
     with connection.cursor() as cursor:
         sql = "SELECT * FROM `weather_station`"
         cursor.execute(sql)
+        # returns a list of dictionaries
         data = cursor.fetchall()
         cursor.close()
-        print(data[1]['temperature'])
+        # print(data[1]['temperature'])
+        # print(data)
 
     # return render_template('projects/booknotes.html',data=data)
     return render_template('/{}.html'.format(project),data=data)
