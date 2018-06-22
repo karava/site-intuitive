@@ -4,8 +4,9 @@ import pymysql.cursors
 app = Flask(__name__)
 
 # Check if database is on local server
-localserver = True
+localserver = False
 
+#creating connection with mysql database
 if(localserver):
     connection = pymysql.connect(host='localhost',
                                  user='root',
