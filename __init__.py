@@ -4,7 +4,7 @@ import pymysql.cursors
 app = Flask(__name__)
 
 # Check if database is on local server
-localserver = False
+localserver = True
 
 if(localserver):
     connection = pymysql.connect(host='localhost',
@@ -29,13 +29,17 @@ def index():
 
 @app.route("/<string:project>")
 def dynamic(project):
-    # print(project)
+    print("1 Now opening page for this project - " + project)
     with connection.cursor() as cursor:
         sql = "SELECT * FROM `weather_station`"
+        print("2 about to execute a sql command")
         cursor.execute(sql)
+        print("3 executed a sql command")
         # returns a list of dictionaries
         data = cursor.fetchall()
-        cursor.close()
+        print("4 fetched sql data")
+        connection.close()
+        print("5 closed connection")
         # print(data[1]['temperature'])
         # print(data)
 
