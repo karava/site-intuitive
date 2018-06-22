@@ -39,7 +39,7 @@ def dynamic(project):
         # returns a list of dictionaries
         data = cursor.fetchall()
         print("4 fetched sql data")
-        connection.close()
+        cursor.close()
         print("5 closed connection")
         # print(data[1]['temperature'])
         # print(data)
