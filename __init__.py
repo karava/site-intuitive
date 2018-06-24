@@ -18,6 +18,7 @@ except pymysql.err.OperationalError:
                                  db='Kish',
                                  charset='',
                                  cursorclass=pymysql.cursors.DictCursor)
+    print("accessing database remotely")
 
 
 @app.route("/")
