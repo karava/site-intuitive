@@ -3,18 +3,15 @@ import pymysql.cursors
 
 app = Flask(__name__)
 
-# Check if database is on local server
-localserver = True
-
-#creating connection with mysql database
-if(localserver):
+#creating connection with mysql database, first try to see if database is local
+try:
     connection = pymysql.connect(host='localhost',
                                  user='root',
                                  password='kishan123',
                                  db='Kish',
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-else:
+except pymysql.err.OperationalError:
     connection = pymysql.connect(host='139.59.228.125',
                                  user='root',
                                  password='kishan123',
