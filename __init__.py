@@ -29,6 +29,11 @@ def index():
 @app.route("/<string:project>")
 def dynamic(project):
     print("1 Now opening page for this project - " + project)
+
+    #treat special case of inventoryApp which is a subdomain
+    if project == 'inventoryApp':
+        return redirect("http://invapp.intuitive.ai")
+
     with connection.cursor() as cursor:
         sql = "SELECT * FROM `weather_station`"
         print("2 about to execute a sql command")
